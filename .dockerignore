@@ -1,0 +1,10 @@
+node_modules
+.next
+.git
+.gitignore
+.env*
+!.env.example
+coverage
+*.md
+AGENTS.md
+.github

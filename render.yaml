@@ -1,0 +1,24 @@
+# Render Blueprint. Connect this repo from the Render dashboard and it
+# provisions a free Node web service — no Vercel account required.
+#
+# Render reads GitHub / GitLab / Bitbucket, not Cursor Origin. See the
+# README "Publish" → Render section for the browser-only steps.
+services:
+  - type: web
+    name: venture-1
+    runtime: node
+    plan: free
+    region: oregon
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "22.14.0"
+      - key: NODE_ENV
+        value: production
+      # Optional. Leave unset to keep the offline fallback responder.
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: ANTHROPIC_API_KEY
+        sync: false
